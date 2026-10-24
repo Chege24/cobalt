@@ -54,4 +54,5 @@ USER node
 EXPOSE 9000
 
 # Cobalt's entry point — find it dynamically
-CMD ["sh", "-c", "node src/cobalt.js || node src/index.js || node index.js"]
+
+CMD ["npm", "start"]
