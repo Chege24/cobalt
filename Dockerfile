@@ -49,7 +49,7 @@ COPY --from=build --chown=node:node /app/.git /app/.git
 
 # Fallback env vars
 ENV API_URL=https://my-cobalt-api.onrender.com
-ENV YOUTUBE_SESSION_COOKIE="qabwAf3o8sDghlJt/A2tIg3R-YYo5lS4sp"
+
 
 USER node
 
