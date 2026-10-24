@@ -19,12 +19,13 @@ RUN pnpm install --frozen-lockfile
 # Copy source
 COPY . .
 
-# Initialize a fake git repo so cobalt can read commit info at runtime
+# Initialize a fake git repo WITH a remote so cobalt can read commit info
 RUN git init && \
     git config user.email "build@render.com" && \
     git config user.name "Render Build" && \
+    git remote add origin https://github.com/Chege24/cobalt.git && \
     git add -A && \
-    git commit -m "render build" --allow-empty
+    git commit -m "render build"
 
 # Build the API (if build script exists)
 RUN pnpm --filter=@imput/cobalt-api build || true
@@ -53,6 +54,5 @@ USER node
 
 EXPOSE 9000
 
-# Cobalt's entry point — find it dynamically
-
+# Use npm start — runs whatever's in package.json's "start" script
 CMD ["npm", "start"]
